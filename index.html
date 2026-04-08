@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takeaway O Bom Sabor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">O Bom Sabor</div>
+        <div class="nav-icons">
+            <div class="cart-container" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="titulo-central">O Bom Sabor</h1>
+            <p class="subtitulo">COMIDA TRADICIONAL EM MONTE GORDO</p>
+            <button class="btn-menu-principal" onclick="abrirModalMenu()">Ver Menu e Pedir</button>
+        </div>
+    </header>
+
+    <div id="modal-menu" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>MENU PRINCIPAL</h2>
+                <i class="fa-solid fa-xmark" onclick="fecharModalMenu()"></i>
+            </div>
+            
+            <div class="modal-body">
+                <h3>Pratos do Dia</h3>
+                <div id="lista-pratos-dia"></div>
+                
+                <h3>Pizzas</h3>
+                <div id="lista-pizzas"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>O Meu Cesto</h3>
+            <i class="fa-solid fa-arrow-right" onclick="toggleCart()"></i>
+        </div>
+        <div id="cart-items-list"></div>
+        <div class="sidebar-footer">
+            <label>Hora de Recolha:</label>
+            <select id="agendar-hora"></select>
+            <label class="saco-check">
+                <input type="checkbox" id="check-saco" onchange="renderCart()"> Incluir Saco (+0,20€)
+            </label>
+            <div class="total-box">
+                <span>Total:</span>
+                <span id="cart-total">0.00€</span>
+            </div>
+            <button class="btn-pagar" onclick="confirmar()">Confirmar Já</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
