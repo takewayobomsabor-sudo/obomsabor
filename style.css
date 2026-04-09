@@ -1,42 +1,49 @@
-:root { --cor: #a35d14; --preto: #0d0d0d; }
-
-body { margin: 0; font-family: sans-serif; background: var(--preto); color: white; }
-
-/* Navbar */
-.navbar { display: flex; justify-content: space-between; padding: 15px 5%; position: fixed; width: 100%; z-index: 100; box-sizing: border-box; background: rgba(0,0,0,0.7); }
-
-/* Hero - A Pizza que gostas */
-.hero { 
-    height: 70vh; 
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
-                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80'); 
-    background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center; text-align: center;
+.item-card {
+    background: #222;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
 }
-.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; }
-.btn-principal { background: var(--cor); color: white; border: none; padding: 16px 40px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; }
 
-/* Horários Lado a Lado no PC, em Lista no Telemóvel */
-.seccao-horarios { 
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 30px; 
-    padding: 50px 10%; 
-    justify-content: center; 
+.item-nome {
+    display: block;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--cor);
 }
-.horario-col { flex: 1; min-width: 280px; }
-.horario-col h3 { color: var(--cor); border-left: 3px solid var(--cor); padding-left: 10px; font-size: 1.1rem; }
 
-.seccao-mapa { padding: 0 10% 50px; }
-.mapa-wrapper { border-radius: 15px; overflow: hidden; border: 1px solid #333; }
+.opcoes-dose {
+    display: flex;
+    gap: 10px;
+}
 
-/* Modal e Sidebar */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; }
-.modal-content { background: #1a1a1a; margin: 20px auto; width: 90%; max-width: 500px; padding: 25px; border-radius: 10px; }
-.sidebar { position: fixed; right: -100%; top: 0; width: 350px; height: 100%; background: #000; z-index: 2000; transition: 0.4s; padding: 20px; box-sizing: border-box; }
-.sidebar.active { right: 0; }
+.opcoes-dose button, .btn-add-simples {
+    flex: 1;
+    background: #333;
+    color: white;
+    border: 1px solid var(--cor);
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
 
-@media (max-width: 600px) {
-    .sidebar { width: 100%; }
-    .hero { height: 60vh; }
+.opcoes-dose button:hover {
+    background: var(--cor);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #222;
+}
+
+.cart-item i {
+    color: #ff4444;
+    margin-left: 10px;
+    cursor: pointer;
 }
