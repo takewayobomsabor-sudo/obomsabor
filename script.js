@@ -14,16 +14,10 @@ const menuData = {
 let cart = [];
 
 function abrirModalMenu() {
-    const modal = document.getElementById('modal-menu');
-    document.getElementById('lista-pratos-dia').innerHTML = "<h3>Pratos do Dia</h3>" + menuData.pratos.map(p => `
+    document.getElementById('lista-pratos-dia').innerHTML = "<h3 style='color:#a35d14'>Pratos</h3>" + menuData.pratos.map(p => `
         <div class="item-menu" onclick="add('${p.n}', ${p.v})"><span>${p.n}</span><b>${p.v.toFixed(2)}€</b></div>
     `).join('');
-    
-    document.getElementById('lista-pizzas').innerHTML = "<h3>Pizzas</h3>" + menuData.pizzas.map(p => `
-        <div class="item-menu" onclick="add('${p.n}', ${p.v})"><span>${p.n}</span><b>${p.v.toFixed(2)}€</b></div>
-    `).join('');
-    
-    modal.style.display = 'flex';
+    document.getElementById('modal-menu').style.display = 'flex';
 }
 
 function fecharModalMenu() { document.getElementById('modal-menu').style.display = 'none'; }
@@ -40,11 +34,9 @@ function add(n, v) {
 function renderCart() {
     const total = cart.reduce((acc, item) => acc + item.v, 0);
     document.getElementById('cart-items-list').innerHTML = cart.map(item => `
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #222">
-            <span>${item.n}</span><b>${item.v.toFixed(2)}€</b>
-        </div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #222"><span>${item.n}</span><b>${item.v.toFixed(2)}€</b></div>
     `).join('');
     document.getElementById('cart-total').innerText = total.toFixed(2) + "€";
 }
 
-function confirmar() { alert("Pedido recebido! Prepare o seu pagamento."); }
+function confirmar() { alert("Pedido recebido!"); }
