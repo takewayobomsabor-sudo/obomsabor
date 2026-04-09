@@ -28,56 +28,42 @@
     </header>
 
     <main class="container">
-        <section class="horario-unificado">
-            <div class="quadro-horario">
-                <h3><i class="fa-solid fa-clock"></i> Horário de Atendimento</h3>
-                <p><strong>Segunda - Domingo:</strong> 11:00 - 14:00</p>
-                <p><strong>Segunda - Sábado:</strong> 18:00 - 21:00</p>
-                
-                <div class="divisor"></div>
-                
-                <h3><i class="fa-solid fa-utensils"></i> Serviço de Balcão</h3>
-                <p><strong>Segunda - Domingo:</strong> 11:40 - 13:45</p>
-                <p><strong>Segunda - Sábado:</strong> 18:45 - 20:40</p>
+        <section class="horarios-brutal">
+    <div class="glass-card">
+        <div class="card-header">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <h2>Horários de Serviço</h2>
+        </div>
+        
+        <div class="horario-content">
+            <div class="horario-group">
+                <span class="group-title">Atendimento Geral</span>
+                <div class="time-row">
+                    <span class="day">Segunda a Domingo</span>
+                    <span class="hours">11:00 — 14:00</span>
+                </div>
+                <div class="time-row">
+                    <span class="day">Segunda a Sábado</span>
+                    <span class="hours">18:00 — 21:00</span>
+                </div>
             </div>
-        </section>
 
-        <section class="mapa-seccao">
-            <h2 class="titulo-seccao">Onde Estamos</h2>
-            <div class="mapa-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.504284144675!2d-7.45145622345511!3d37.18228394622728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd101666e5a6a6f1%3A0x6a0a0a0a0a0a0a0a!2sMonte%20Gordo!5e0!3m2!1spt-PT!2spt!4v1712670000000!5m2!1spt-PT!2spt" 
-                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </section>
-    </main>
+            <div class="separator-dots"><span></span><span></span><span></span></div>
 
-    <div id="modal-menu" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Menu Principal</h2>
-                <i class="fa-solid fa-xmark" onclick="fecharModalMenu()"></i>
-            </div>
-            <div class="modal-body">
-                <div id="lista-pratos-dia"></div>
-                <div id="lista-pizzas"></div>
+            <div class="horario-group">
+                <span class="group-title">Serviço de Balcão</span>
+                <div class="time-row">
+                    <span class="day">Segunda a Domingo</span>
+                    <span class="hours highlight">11:40 — 13:45</span>
+                </div>
+                <div class="time-row">
+                    <span class="day">Segunda a Sábado</span>
+                    <span class="hours highlight">18:45 — 20:40</span>
+                </div>
             </div>
         </div>
     </div>
-
-    <div id="cart-sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <h3>O Meu Cesto</h3>
-            <i class="fa-solid fa-arrow-right" onclick="toggleCart()"></i>
-        </div>
-        <div id="cart-items-list"></div>
-        <div class="sidebar-footer">
-            <div class="total-box">
-                <span>Total:</span>
-                <span id="cart-total">0.00€</span>
-            </div>
-            <button class="btn-pagar" onclick="confirmar()">Confirmar Já</button>
-        </div>
-    </div>
+</section>
 
     <script src="script.js" defer></script>
 </body>
