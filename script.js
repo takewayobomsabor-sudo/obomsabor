@@ -1,42 +1,67 @@
-const menuData = {
+const produtos = {
     pratos: [
-        {n: "Bacalhau com natas", v: 9.00},
-        {n: "Feijoada de Linguirão", v: 9.00},
-        {n: "Panados de Frango", v: 9.00}
+        { id: 1, nome: "Bacalhau com Natas", preco: 9.00 },
+        { id: 2, nome: "Feijoada de Linguirão", preco: 9.00 },
+        { id: 3, nome: "Panados de Frango", preco: 9.00 }
     ],
     pizzas: [
-        {n: "Pizza Portuguesa", v: 7.00},
-        {n: "Pizza Camponesa", v: 7.00},
-        {n: "Pizza do Mar", v: 7.00}
+        { id: 4, nome: "Pizza Portuguesa", preco: 7.00 },
+        { id: 5, nome: "Pizza Camponesa", preco: 7.00 },
+        { id: 6, nome: "Pizza de Mar", preco: 7.00 }
     ]
 };
 
-let cart = [];
+let cesto = [];
 
-function abrirModalMenu() {
-    document.getElementById('lista-pratos-dia').innerHTML = "<h3 style='color:#a35d14'>Pratos</h3>" + menuData.pratos.map(p => `
-        <div class="item-menu" onclick="add('${p.n}', ${p.v})"><span>${p.n}</span><b>${p.v.toFixed(2)}€</b></div>
+function abrirMenu() { document.getElementById('modal-menu').style.display = 'block'; }
+function fecharMenu() { document.getElementById('modal-menu').style.display = 'none'; }
+function toggleCart() { document.getElementById('carrinho').classList.toggle('active'); }
+
+function renderMenu() {
+    const pratosDiv = document.getElementById('lista-pratos');
+    const pizzasDiv = document.getElementById('lista-pizzas');
+
+    pratosDiv.innerHTML = produtos.pratos.map(p => `
+        <div class="item-menu" onclick="addAoCesto('${p.nome}', ${p.preco})">
+            <span>${p.nome}</span>
+            <span>${p.preco.toFixed(2)}€</span>
+        </div>
     `).join('');
-    document.getElementById('modal-menu').style.display = 'flex';
-}
 
-function fecharModalMenu() { document.getElementById('modal-menu').style.display = 'none'; }
-function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
-
-function add(n, v) {
-    cart.push({n, v});
-    document.getElementById('cart-count').innerText = cart.length;
-    renderCart();
-    fecharModalMenu();
-    toggleCart();
-}
-
-function renderCart() {
-    const total = cart.reduce((acc, item) => acc + item.v, 0);
-    document.getElementById('cart-items-list').innerHTML = cart.map(item => `
-        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #222"><span>${item.n}</span><b>${item.v.toFixed(2)}€</b></div>
+    pizzasDiv.innerHTML = produtos.pizzas.map(p => `
+        <div class="item-menu" onclick="addAoCesto('${p.nome}', ${p.preco})">
+            <span>${p.nome}</span>
+            <span>${p.preco.toFixed(2)}€</span>
+        </div>
     `).join('');
-    document.getElementById('cart-total').innerText = total.toFixed(2) + "€";
 }
 
-function confirmar() { alert("Pedido recebido!"); }
+function addAoCesto(nome, preco) {
+    cesto.push({ nome, preco });
+    atualizarCesto();
+    fecharMenu();
+    if(!document.getElementById('carrinho').classList.contains('active')) toggleCart();
+}
+
+function atualizarCesto() {
+    const itensDiv = document.getElementById('itens-carrinho');
+    const totalSpan = document.getElementById('total-valor');
+    const countSpan = document.getElementById('cart-count');
+
+    itensDiv.innerHTML = cesto.map(i => `
+        <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+            <span>${i.nome}</span><span>${i.preco.toFixed(2)}€</span>
+        </div>
+    `).join('');
+
+    const total = cesto.reduce((acc, i) => acc + i.preco, 0);
+    totalSpan.innerText = total.toFixed(2) + "€";
+    countSpan.innerText = cesto.length;
+}
+
+function finalizarPedido() {
+    const msg = encodeURIComponent(`Olá! Gostaria de encomendar: \n${cesto.map(i => "- " + i.nome).join('\n')}\nTotal: ${document.getElementById('total-valor').innerText}`);
+    window.open(`https://wa.me/351912345678?text=${msg}`);
+}
+
+renderMenu();
