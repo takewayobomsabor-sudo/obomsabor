@@ -1,71 +1,44 @@
-:root {
-    --primaria: #a35d14;
-    --fundo: #0d0d0d;
+:root { --cor: #a35d14; --preto: #0d0d0d; }
+
+body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--preto); color: white; overflow-x: hidden; }
+
+.navbar { display: flex; justify-content: space-between; padding: 15px 5%; position: fixed; width: 100%; z-index: 100; box-sizing: border-box; background: rgba(0,0,0,0.6); }
+.logo { font-weight: bold; color: white; }
+.cart-icon { cursor: pointer; color: white; }
+
+/* Fundo com Pizza em Grande */
+.hero { 
+    height: 70vh; 
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80'); 
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; text-align: center;
 }
+.hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; }
+.hero-content p { letter-spacing: 2px; margin-bottom: 30px; }
+.btn-principal { background: var(--cor); color: white; border: none; padding: 16px 45px; border-radius: 5px; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
 
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: var(--fundo);
-    color: white;
-}
+/* Horários Lado a Lado */
+.seccao-horarios { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 50px 10%; background: var(--preto); }
+.horario-col h3 { color: var(--cor); font-size: 1.1rem; margin-bottom: 15px; border-left: 3px solid var(--cor); padding-left: 10px; }
+.horario-col p { margin: 5px 0; color: #ccc; }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 5%;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-    box-sizing: border-box;
-    background: rgba(0,0,0,0.5);
-}
+.seccao-mapa { padding: 0 10% 50px; }
+.mapa-wrapper { border-radius: 15px; overflow: hidden; border: 1px solid #333; }
 
-/* IMAGEM DE FUNDO - Garantida */
-.hero {
-    height: 70vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+/* Modal Estilo Foto */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; }
+.modal-content { background: #1a1a1a; margin: 30px auto; width: 90%; max-width: 550px; border-radius: 12px; padding: 25px; border: 1px solid #333; }
+.modal-header { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
+.fechar-modal { cursor: pointer; font-size: 1.5rem; color: var(--cor); }
 
-.titulo-principal { font-size: 3.5rem; margin: 0; font-weight: 800; }
-.subtitulo { letter-spacing: 2px; margin-bottom: 25px; color: #ddd; }
+.item-menu { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #222; cursor: pointer; }
 
-.btn-pedido {
-    background-color: var(--primaria);
-    color: white;
-    border: none;
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent; /* Melhora o toque no iPhone */
-}
-
-.info-footer { padding: 40px 5%; max-width: 900px; margin: 0 auto; }
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
-
-/* Modal */
-.modal { display: none; position: fixed; z-index: 200; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
-.modal-content { background: #1a1a1a; margin: 20px auto; width: 90%; max-width: 500px; border-radius: 10px; padding: 20px; }
-.modal-header { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 10px; }
-.close { font-size: 2rem; cursor: pointer; color: var(--primaria); }
-
-.item-menu { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #222; }
-
-/* Carrinho */
-.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #111; z-index: 300; transition: 0.4s; padding: 20px; box-sizing: border-box; }
+/* Sidebar */
+.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #000; z-index: 2000; transition: 0.4s; padding: 25px; box-sizing: border-box; }
 .sidebar.active { right: 0; }
 
-@media (max-width: 600px) {
-    .info-grid { grid-template-columns: 1fr; }
-    .titulo-principal { font-size: 2.5rem; }
+@media (max-width: 768px) {
+    .seccao-horarios { grid-template-columns: 1fr; text-align: center; }
+    .horario-col h3 { border-left: none; padding: 0; }
     .sidebar { width: 100%; }
 }
