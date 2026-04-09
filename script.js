@@ -1,67 +1,80 @@
 const produtos = {
     pratos: [
-        { id: 1, nome: "Bacalhau com Natas", preco: 9.00 },
-        { id: 2, nome: "Feijoada de Linguirão", preco: 9.00 },
-        { id: 3, nome: "Panados de Frango", preco: 9.00 }
+        { nome: "Bacalhau com Natas", preco: 9.00 },
+        { nome: "Feijoada de Linguirão", preco: 9.00 },
+        { nome: "Panados de Frango", preco: 9.00 }
     ],
     pizzas: [
-        { id: 4, nome: "Pizza Portuguesa", preco: 7.00 },
-        { id: 5, nome: "Pizza Camponesa", preco: 7.00 },
-        { id: 6, nome: "Pizza de Mar", preco: 7.00 }
+        { nome: "Pizza Portuguesa", preco: 7.00 },
+        { nome: "Pizza Camponesa", preco: 7.00 },
+        { nome: "Pizza de Mar", preco: 7.00 }
     ]
 };
 
 let cesto = [];
 
-function abrirMenu() { document.getElementById('modal-menu').style.display = 'block'; }
-function fecharMenu() { document.getElementById('modal-menu').style.display = 'none'; }
-function toggleCart() { document.getElementById('carrinho').classList.toggle('active'); }
+// FUNÇÃO PARA ABRIR NO TELEMÓVEL
+document.addEventListener('DOMContentLoaded', () => {
+    const btnAbrir = document.getElementById('botao-abrir-menu');
+    const btnFechar = document.getElementById('botao-fechar-menu');
+    const modal = document.getElementById('modal-menu');
+
+    if(btnAbrir) {
+        btnAbrir.addEventListener('click', () => {
+            modal.style.display = 'block';
+            renderMenu();
+        });
+        // Suporte extra para toque rápido em telemóveis
+        btnAbrir.addEventListener('touchstart', (e) => {
+            modal.style.display = 'block';
+            renderMenu();
+        }, {passive: true});
+    }
+
+    if(btnFechar) {
+        btnFechar.addEventListener('click', () => modal.style.display = 'none');
+    }
+});
+
+function toggleCart() {
+    document.getElementById('carrinho').classList.toggle('active');
+}
 
 function renderMenu() {
-    const pratosDiv = document.getElementById('lista-pratos');
-    const pizzasDiv = document.getElementById('lista-pizzas');
-
-    pratosDiv.innerHTML = produtos.pratos.map(p => `
+    document.getElementById('lista-pratos').innerHTML = produtos.pratos.map(p => `
         <div class="item-menu" onclick="addAoCesto('${p.nome}', ${p.preco})">
-            <span>${p.nome}</span>
-            <span>${p.preco.toFixed(2)}€</span>
+            <span>${p.nome}</span><b>${p.preco.toFixed(2)}€</b>
         </div>
     `).join('');
 
-    pizzasDiv.innerHTML = produtos.pizzas.map(p => `
+    document.getElementById('lista-pizzas').innerHTML = produtos.pizzas.map(p => `
         <div class="item-menu" onclick="addAoCesto('${p.nome}', ${p.preco})">
-            <span>${p.nome}</span>
-            <span>${p.preco.toFixed(2)}€</span>
+            <span>${p.nome}</span><b>${p.preco.toFixed(2)}€</b>
         </div>
     `).join('');
 }
 
 function addAoCesto(nome, preco) {
     cesto.push({ nome, preco });
+    document.getElementById('cart-count').innerText = cesto.length;
+    document.getElementById('modal-menu').style.display = 'none';
     atualizarCesto();
-    fecharMenu();
-    if(!document.getElementById('carrinho').classList.contains('active')) toggleCart();
+    toggleCart();
 }
 
 function atualizarCesto() {
-    const itensDiv = document.getElementById('itens-carrinho');
-    const totalSpan = document.getElementById('total-valor');
-    const countSpan = document.getElementById('cart-count');
-
-    itensDiv.innerHTML = cesto.map(i => `
+    const total = cesto.reduce((acc, i) => acc + i.preco, 0);
+    document.getElementById('itens-carrinho').innerHTML = cesto.map(i => `
         <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-            <span>${i.nome}</span><span>${i.preco.toFixed(2)}€</span>
+            <span>${i.nome}</span><b>${i.preco.toFixed(2)}€</b>
         </div>
     `).join('');
-
-    const total = cesto.reduce((acc, i) => acc + i.preco, 0);
-    totalSpan.innerText = total.toFixed(2) + "€";
-    countSpan.innerText = cesto.length;
+    document.getElementById('total-valor').innerText = total.toFixed(2) + "€";
 }
 
 function finalizarPedido() {
-    const msg = encodeURIComponent(`Olá! Gostaria de encomendar: \n${cesto.map(i => "- " + i.nome).join('\n')}\nTotal: ${document.getElementById('total-valor').innerText}`);
-    window.open(`https://wa.me/351912345678?text=${msg}`);
+    alert("Pedido confirmado! Obrigado.");
+    cesto = [];
+    atualizarCesto();
+    toggleCart();
 }
-
-renderMenu();
