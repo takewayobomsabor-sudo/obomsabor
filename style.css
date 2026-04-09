@@ -1,44 +1,42 @@
 :root { --cor: #a35d14; --preto: #0d0d0d; }
 
-body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--preto); color: white; overflow-x: hidden; }
+body { margin: 0; font-family: sans-serif; background: var(--preto); color: white; }
 
-.navbar { display: flex; justify-content: space-between; padding: 15px 5%; position: fixed; width: 100%; z-index: 100; box-sizing: border-box; background: rgba(0,0,0,0.6); }
-.logo { font-weight: bold; color: white; }
-.cart-icon { cursor: pointer; color: white; }
+/* Navbar */
+.navbar { display: flex; justify-content: space-between; padding: 15px 5%; position: fixed; width: 100%; z-index: 100; box-sizing: border-box; background: rgba(0,0,0,0.7); }
 
-/* Fundo com Pizza em Grande */
+/* Hero - A Pizza que gostas */
 .hero { 
     height: 70vh; 
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80'); 
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80'); 
     background-size: cover; background-position: center;
     display: flex; align-items: center; justify-content: center; text-align: center;
 }
-.hero-content h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; }
-.hero-content p { letter-spacing: 2px; margin-bottom: 30px; }
-.btn-principal { background: var(--cor); color: white; border: none; padding: 16px 45px; border-radius: 5px; font-weight: bold; font-size: 1.1rem; cursor: pointer; }
+.hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; }
+.btn-principal { background: var(--cor); color: white; border: none; padding: 16px 40px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; }
 
-/* Horários Lado a Lado */
-.seccao-horarios { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 50px 10%; background: var(--preto); }
-.horario-col h3 { color: var(--cor); font-size: 1.1rem; margin-bottom: 15px; border-left: 3px solid var(--cor); padding-left: 10px; }
-.horario-col p { margin: 5px 0; color: #ccc; }
+/* Horários Lado a Lado no PC, em Lista no Telemóvel */
+.seccao-horarios { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 30px; 
+    padding: 50px 10%; 
+    justify-content: center; 
+}
+.horario-col { flex: 1; min-width: 280px; }
+.horario-col h3 { color: var(--cor); border-left: 3px solid var(--cor); padding-left: 10px; font-size: 1.1rem; }
 
 .seccao-mapa { padding: 0 10% 50px; }
 .mapa-wrapper { border-radius: 15px; overflow: hidden; border: 1px solid #333; }
 
-/* Modal Estilo Foto */
-.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; }
-.modal-content { background: #1a1a1a; margin: 30px auto; width: 90%; max-width: 550px; border-radius: 12px; padding: 25px; border: 1px solid #333; }
-.modal-header { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 20px; }
-.fechar-modal { cursor: pointer; font-size: 1.5rem; color: var(--cor); }
-
-.item-menu { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #222; cursor: pointer; }
-
-/* Sidebar */
-.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #000; z-index: 2000; transition: 0.4s; padding: 25px; box-sizing: border-box; }
+/* Modal e Sidebar */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; }
+.modal-content { background: #1a1a1a; margin: 20px auto; width: 90%; max-width: 500px; padding: 25px; border-radius: 10px; }
+.sidebar { position: fixed; right: -100%; top: 0; width: 350px; height: 100%; background: #000; z-index: 2000; transition: 0.4s; padding: 20px; box-sizing: border-box; }
 .sidebar.active { right: 0; }
 
-@media (max-width: 768px) {
-    .seccao-horarios { grid-template-columns: 1fr; text-align: center; }
-    .horario-col h3 { border-left: none; padding: 0; }
+@media (max-width: 600px) {
     .sidebar { width: 100%; }
+    .hero { height: 60vh; }
 }
