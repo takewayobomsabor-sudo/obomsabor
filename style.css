@@ -1,44 +1,126 @@
-:root { --main: #a35d14; --dark: #0d0d0d; --card: #161616; }
-
-body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--dark); color: white; overflow-x: hidden; }
-
-/* Navbar */
-.navbar { display: flex; justify-content: space-between; padding: 15px 5%; background: rgba(0,0,0,0.95); position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; border-bottom: 1px solid #222; }
-.logo { font-weight: 800; color: var(--main); }
-
-/* Hero com Foto de Fundo */
-.hero { 
-    height: 65vh; 
-    background: linear-gradient(rgba(0,0,0,0.4), var(--dark)), 
-                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop'); 
-    background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;
+/* --- SECÇÃO HORÁRIO BRUTAL --- */
+.horarios-brutal {
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    background: var(--dark); /* Garante que o fundo combina */
 }
-.titulo-central { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; font-weight: 900; text-shadow: 2px 2px 15px rgba(0,0,0,0.8); }
-.subtitulo { letter-spacing: 2px; color: #ddd; margin-bottom: 30px; }
-.btn-menu-principal { background: var(--main); border: none; padding: 15px 40px; color: white; font-weight: bold; border-radius: 5px; cursor: pointer; font-size: 1.1rem; transition: 0.3s; }
 
-/* Horário num Bloco Único e Centrado */
-.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
-.quadro-horario { 
-    background: var(--card); 
-    padding: 40px; 
-    border-radius: 20px; 
-    border: 1px solid #333; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    margin-bottom: 50px;
+.glass-card {
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(15px); /* Efeito de vidro que desfoca o fundo */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
 }
-.quadro-horario h3 { color: var(--main); margin-top: 0; font-size: 1.2rem; text-transform: uppercase; }
-.quadro-horario p { margin: 10px 0; color: #ccc; font-size: 1.1rem; }
-.divisor { height: 1px; background: #333; margin: 25px auto; width: 60%; }
 
-/* Mapa */
-.mapa-wrapper { border-radius: 20px; overflow: hidden; border: 2px solid #333; margin-top: 20px; }
-.titulo-seccao { color: var(--main); text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; }
+/* Linha brilhante no topo do cartão */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: linear-gradient(90deg, transparent, var(--main), transparent);
+}
 
-/* Modal & Sidebar */
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
-.modal-content { background: #111; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; }
-.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #000; z-index: 3000; transition: 0.4s; padding: 25px; }
-.sidebar.active { right: 0; }
-.item-menu { display: flex; justify-content: space-between; padding: 15px; background: #1a1a1a; margin-bottom: 10px; border-radius: 8px; cursor: pointer; }
+.card-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.card-header i {
+    font-size: 2.5rem;
+    color: var(--main);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.card-header h2 {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    font-weight: 800;
+    color: #fff;
+}
+
+.horario-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.horario-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.group-title {
+    color: var(--main);
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.time-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.day {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.hours {
+    font-family: 'monospace', sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.hours.highlight {
+    color: var(--main);
+    text-shadow: 0 0 10px rgba(163, 93, 20, 0.3);
+}
+
+.separator-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.separator-dots span {
+    width: 6px;
+    height: 6px;
+    background: var(--main);
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+/* Ajuste Perfeito para Telemóvel */
+@media (max-width: 480px) {
+    .glass-card { padding: 30px 20px; }
+    .time-row { 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center;
+        gap: 5px;
+        padding: 12px 0;
+    }
+    .group-title { text-align: center; }
+    .hours { font-size: 1.2rem; }
+}
