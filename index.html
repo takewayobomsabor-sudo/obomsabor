@@ -1,93 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Bom Sabor | Takeaway</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-
-    <nav class="navbar">
-        <div class="logo">O Bom Sabor</div>
-        <div class="nav-icons">
-            <div class="cart-container" onclick="toggleCart()">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-count">0</span>
-            </div>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="titulo-central">O Bom Sabor</h1>
-            <p class="subtitulo">COMIDA TRADICIONAL EM MONTE GORDO</p>
-            <button class="btn-menu-principal" onclick="abrirModalMenu()">Ver Menu e Pedir</button>
-        </div>
-    </header>
-
-    <main class="container">
-        <section class="info-section">
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3><i class="fa-solid fa-clock"></i> Horário de Atendimento</h3>
-                    <p><strong>Segunda - Domingo:</strong> 11:00 - 14:00</p>
-                    <p><strong>Segunda - Sábado:</strong> 18:00 - 21:00</p>
+<main class="container">
+        <section class="horarios-container">
+            <h2 class="section-title">Horários</h2>
+            <div class="horario-card">
+                <div class="horario-header">
+                    <i class="fa-solid fa-clock"></i>
+                    <span>Atendimento & Balcão</span>
                 </div>
-                <div class="info-card">
-                    <h3><i class="fa-solid fa-utensils"></i> Serviço de Balcão</h3>
-                    <p><strong>Segunda - Domingo:</strong> 11:40 - 13:45</p>
-                    <p><strong>Segunda - Sábado:</strong> 18:45 - 20:40</p>
+                <div class="horario-body">
+                    <div class="horario-row">
+                        <span class="dia">Almoço (Seg - Dom)</span>
+                        <span class="hora">11:00 - 14:00</span>
+                    </div>
+                    <div class="horario-row sub-row">
+                        <span class="dia">✦ Serviço Balcão</span>
+                        <span class="hora">11:40 - 13:45</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="horario-row">
+                        <span class="dia">Jantar (Seg - Sáb)</span>
+                        <span class="hora">18:00 - 21:00</span>
+                    </div>
+                    <div class="horario-row sub-row">
+                        <span class="dia">✦ Serviço Balcão</span>
+                        <span class="hora">18:45 - 20:40</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="mapa-seccao">
-            <h3 class="category-title">Onde Estamos</h3>
-            <div class="mapa-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.0232468351545!2d-7.4523612!3d37.17585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1005f013d69f93%3A0xcc13843ab2236e9d!2sR.%20Pedro%20%C3%81lvares%20Cabral%2C%208900-465%20Monte%20Gordo!5e0!3m2!1spt!2spt!4v1712615000000!5m2!1spt!2spt" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <h2 class="section-title">Localização</h2>
+            <div class="mapa-wrapper">
+                <iframe src="https://www.google.com/maps/contrib/110941240680872120776/reviews" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
     </main>
-
-    <div id="modal-menu" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>MENU PRINCIPAL</h2>
-                <i class="fa-solid fa-xmark" onclick="fecharModalMenu()"></i>
-            </div>
-            <div class="modal-body">
-                <h3 class="cat-label">Pratos do Dia</h3>
-                <div id="lista-pratos-dia"></div>
-                <h3 class="cat-label">Pizzas</h3>
-                <div id="lista-pizzas"></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="cart-sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <h3>O Meu Cesto</h3>
-            <i class="fa-solid fa-arrow-right" onclick="toggleCart()"></i>
-        </div>
-        <div id="cart-items-list"></div>
-        <div class="sidebar-footer">
-            <label>Hora de Recolha:</label>
-            <select id="agendar-hora" class="input-field"></select>
-            <label class="saco-check">
-                <input type="checkbox" id="check-saco" onchange="renderCart()"> Incluir Saco (+0,20€)
-            </label>
-            <div class="total-box">
-                <span>Total:</span>
-                <span id="cart-total">0.00€</span>
-            </div>
-            <button class="btn-pagar" onclick="confirmar()">Confirmar Já</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
-</body>
-</html>
