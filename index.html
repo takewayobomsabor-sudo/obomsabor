@@ -1,37 +1,46 @@
-<main class="container">
-        <section class="horarios-container">
-            <h2 class="section-title">Horários</h2>
-            <div class="horario-card">
-                <div class="horario-header">
-                    <i class="fa-solid fa-clock"></i>
-                    <span>Atendimento & Balcão</span>
-                </div>
-                <div class="horario-body">
-                    <div class="horario-row">
-                        <span class="dia">Almoço (Seg - Dom)</span>
-                        <span class="hora">11:00 - 14:00</span>
-                    </div>
-                    <div class="horario-row sub-row">
-                        <span class="dia">✦ Serviço Balcão</span>
-                        <span class="hora">11:40 - 13:45</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="horario-row">
-                        <span class="dia">Jantar (Seg - Sáb)</span>
-                        <span class="hora">18:00 - 21:00</span>
-                    </div>
-                    <div class="horario-row sub-row">
-                        <span class="dia">✦ Serviço Balcão</span>
-                        <span class="hora">18:45 - 20:40</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Bom Sabor | Takeaway</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-        <section class="mapa-seccao">
-            <h2 class="section-title">Localização</h2>
-            <div class="mapa-wrapper">
-                <iframe src="https://www.google.com/maps/contrib/110941240680872120776/reviews" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <nav class="navbar">
+        <div class="logo">O Bom Sabor</div>
+        <div class="nav-icons">
+            <div class="cart-container" onclick="toggleCart()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
             </div>
-        </section>
-    </main>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="titulo-central">O Bom Sabor</h1>
+            <p class="subtitulo">COMIDA TRADICIONAL EM MONTE GORDO</p>
+            <button class="btn-menu-principal" onclick="abrirModalMenu()">Ver Menu e Pedir</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="horarios-section">
+            <h2 class="section-title">Horários de Funcionamento</h2>
+            <div class="horario-flex">
+                <div class="horario-box">
+                    <h3><i class="fa-solid fa-clock"></i> Atendimento</h3>
+                    <div class="horario-item">
+                        <span>Segunda - Domingo</span>
+                        <span class="badge">11:00 - 14:00</span>
+                    </div>
+                    <div class="horario-item">
+                        <span>Segunda - Sábado</span>
+                        <span class="badge">18:00 - 21:00</span>
+                    </div>
+                </div>
+
+                <div class="
