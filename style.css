@@ -1,40 +1,44 @@
-:root { --main: #a35d14; --dark: #0d0d0d; }
+:root { --main: #a35d14; --dark: #0d0d0d; --card: #161616; }
 
-body { margin: 0; font-family: sans-serif; background: var(--dark); color: white; }
+body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--dark); color: white; overflow-x: hidden; }
 
-.navbar { display: flex; justify-content: space-between; padding: 15px 5%; background: rgba(0,0,0,0.9); position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; }
+/* Navbar */
+.navbar { display: flex; justify-content: space-between; padding: 15px 5%; background: rgba(0,0,0,0.95); position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; border-bottom: 1px solid #222; }
+.logo { font-weight: 800; color: var(--main); }
 
-/* IMAGEM DE FUNDO - Corrigida */
+/* Hero com Foto de Fundo */
 .hero { 
-    height: 70vh; 
+    height: 65vh; 
     background: linear-gradient(rgba(0,0,0,0.4), var(--dark)), 
                 url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop'); 
-    background-size: cover; 
-    background-position: center;
-    display: flex; align-items: center; justify-content: center; text-align: center;
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;
 }
+.titulo-central { font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; font-weight: 900; text-shadow: 2px 2px 15px rgba(0,0,0,0.8); }
+.subtitulo { letter-spacing: 2px; color: #ddd; margin-bottom: 30px; }
+.btn-menu-principal { background: var(--main); border: none; padding: 15px 40px; color: white; font-weight: bold; border-radius: 5px; cursor: pointer; font-size: 1.1rem; transition: 0.3s; }
 
-.titulo-central { font-size: 4rem; margin: 0; font-weight: 800; }
-.subtitulo { letter-spacing: 2px; color: #ccc; }
-
-.btn-menu-principal { 
-    background: var(--main); border: none; padding: 15px 40px; color: white; 
-    font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 20px;
-    font-size: 1.1rem;
+/* Horário num Bloco Único e Centrado */
+.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+.quadro-horario { 
+    background: var(--card); 
+    padding: 40px; 
+    border-radius: 20px; 
+    border: 1px solid #333; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 50px;
 }
+.quadro-horario h3 { color: var(--main); margin-top: 0; font-size: 1.2rem; text-transform: uppercase; }
+.quadro-horario p { margin: 10px 0; color: #ccc; font-size: 1.1rem; }
+.divisor { height: 1px; background: #333; margin: 25px auto; width: 60%; }
 
-/* Centralização do Horário e Mapa */
-.container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-.horario-flex { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
-.horario-box { background: #1a1a1a; padding: 20px; border-radius: 10px; flex: 1; min-width: 280px; text-align: center; border: 1px solid #333; }
-.horario-box h3 { color: var(--main); }
+/* Mapa */
+.mapa-wrapper { border-radius: 20px; overflow: hidden; border: 2px solid #333; margin-top: 20px; }
+.titulo-seccao { color: var(--main); text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; }
 
-.mapa-wrapper { border-radius: 15px; overflow: hidden; border: 2px solid #333; }
-
-/* Modal */
+/* Modal & Sidebar */
 .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
-.modal-content { background: #111; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; }
-
-/* Sidebar */
-.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #000; z-index: 3000; transition: 0.4s; padding: 20px; }
+.modal-content { background: #111; padding: 25px; border-radius: 15px; width: 90%; max-width: 500px; }
+.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #000; z-index: 3000; transition: 0.4s; padding: 25px; }
 .sidebar.active { right: 0; }
+.item-menu { display: flex; justify-content: space-between; padding: 15px; background: #1a1a1a; margin-bottom: 10px; border-radius: 8px; cursor: pointer; }
