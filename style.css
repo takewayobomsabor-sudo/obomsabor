@@ -1,28 +1,39 @@
-/* Estilo das Secções de Info */
-.info-section { padding: 40px 0; }
-.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+:root { --main: #a35d14; --bg: #0d0d0d; --card: #161616; --text: #f0f0f0; }
 
-.info-card { 
-    background: #1a1a1a; 
-    padding: 25px; 
-    border-radius: 10px; 
-    border-left: 4px solid #a35d14; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+/* Navbar Mobile-Friendly */
+.navbar { display: flex; justify-content: space-between; padding: 15px 5%; background: rgba(0,0,0,0.95); position: fixed; width: 100%; box-sizing: border-box; z-index: 1000; border-bottom: 1px solid #222; }
+.logo { font-weight: 800; color: var(--main); font-size: 1.2rem; }
+
+/* Hero */
+.hero { height: 60vh; background: linear-gradient(rgba(0,0,0,0.4), var(--bg)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1200'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+.titulo-central { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: -2px; }
+
+/* Container Principal */
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.section-title { text-align: center; color: var(--main); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 25px; }
+
+/* QUADRO DE HORÁRIO TOP */
+.horario-card { background: var(--card); border-radius: 20px; border: 1px solid #222; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.horario-header { background: var(--main); padding: 15px; text-align: center; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.horario-body { padding: 25px; }
+.horario-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-weight: 600; }
+.sub-row { color: #888; font-size: 0.85rem; font-weight: 400; padding-left: 10px; margin-bottom: 15px; }
+.divider { height: 1px; background: #333; margin: 15px 0; }
+
+/* Mapa */
+.mapa-wrapper { border-radius: 20px; overflow: hidden; border: 1px solid #222; }
+
+/* Modal & Sidebar no Telemóvel */
+.modal-content { width: 95% !important; border-radius: 25px 25px 0 0 !important; position: fixed; bottom: 0; }
+.sidebar { width: 100% !important; right: -100%; }
+.sidebar.active { right: 0; }
+
+/* MEDIA QUERIES PARA TELEMÓVEL */
+@media (max-width: 600px) {
+    .titulo-central { font-size: 3rem; }
+    .hero { height: 50vh; }
+    .horario-row { flex-direction: column; text-align: center; gap: 5px; }
+    .sub-row { padding-left: 0; }
 }
-
-.info-card h3 { color: #a35d14; margin-top: 0; font-size: 1.1rem; text-transform: uppercase; }
-.info-card p { margin: 8px 0; color: #ccc; font-size: 0.95rem; }
-
-/* Estilo do Mapa */
-.mapa-seccao { margin-top: 50px; }
-.mapa-container { 
-    border-radius: 15px; 
-    overflow: hidden; 
-    border: 2px solid #333; 
-    filter: grayscale(0.3) contrast(1.1); 
-}
-
-.category-title { color: #a35d14; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-
-/* Ajustes Modal */
-.cat-label { color: #a35d14; border-bottom: 1px solid #333; padding-bottom: 5px; margin-top: 20px; }
