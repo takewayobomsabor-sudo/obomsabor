@@ -28,26 +28,24 @@
     </header>
 
     <main class="container">
-        <section class="horarios-section">
-            <h2 class="section-title">Horários de Funcionamento</h2>
-            <div class="horario-flex">
-                <div class="horario-box">
-                    <h3>Atendimento</h3>
-                    <p>Seg - Dom: 11:00 - 14:00</p>
-                    <p>Seg - Sáb: 18:00 - 21:00</p>
-                </div>
-                <div class="horario-box">
-                    <h3>Serviço Balcão</h3>
-                    <p>Seg - Dom: 11:40 - 13:45</p>
-                    <p>Seg - Sáb: 18:45 - 20:40</p>
-                </div>
+        <section class="horario-unificado">
+            <div class="quadro-horario">
+                <h3><i class="fa-solid fa-clock"></i> Horário de Atendimento</h3>
+                <p><strong>Segunda - Domingo:</strong> 11:00 - 14:00</p>
+                <p><strong>Segunda - Sábado:</strong> 18:00 - 21:00</p>
+                
+                <div class="divisor"></div>
+                
+                <h3><i class="fa-solid fa-utensils"></i> Serviço de Balcão</h3>
+                <p><strong>Segunda - Domingo:</strong> 11:40 - 13:45</p>
+                <p><strong>Segunda - Sábado:</strong> 18:45 - 20:40</p>
             </div>
         </section>
 
         <section class="mapa-seccao">
-            <h2 class="section-title">Onde Estamos</h2>
+            <h2 class="titulo-seccao">Onde Estamos</h2>
             <div class="mapa-wrapper">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3181.8665314781775!2d-7.4497645!3d37.185564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd10168449c20a1f%3A0x6d2c4b8b6939a3f!2sMonte%20Gordo!5e0!3m2!1spt-PT!2spt!4v1700000000000" 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.504284144675!2d-7.45145622345511!3d37.18228394622728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd101666e5a6a6f1%3A0x6a0a0a0a0a0a0a0a!2sMonte%20Gordo!5e0!3m2!1spt-PT!2spt!4v1712670000000!5m2!1spt-PT!2spt" 
                 width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
@@ -59,21 +57,25 @@
                 <h2>Menu Principal</h2>
                 <i class="fa-solid fa-xmark" onclick="fecharModalMenu()"></i>
             </div>
-            <div id="lista-pratos-dia"></div>
-            <div id="lista-pizzas"></div>
-            <button class="btn-fechar" onclick="fecharModalMenu()">Fechar</button>
+            <div class="modal-body">
+                <div id="lista-pratos-dia"></div>
+                <div id="lista-pizzas"></div>
+            </div>
         </div>
     </div>
 
     <div id="cart-sidebar" class="sidebar">
         <div class="sidebar-header">
-            <h3>Cesto</h3>
-            <i class="fa-solid fa-xmark" onclick="toggleCart()"></i>
+            <h3>O Meu Cesto</h3>
+            <i class="fa-solid fa-arrow-right" onclick="toggleCart()"></i>
         </div>
         <div id="cart-items-list"></div>
         <div class="sidebar-footer">
-            <div class="total-box">Total: <span id="cart-total">0.00€</span></div>
-            <button class="btn-pagar" onclick="confirmar()">Confirmar</button>
+            <div class="total-box">
+                <span>Total:</span>
+                <span id="cart-total">0.00€</span>
+            </div>
+            <button class="btn-pagar" onclick="confirmar()">Confirmar Já</button>
         </div>
     </div>
 
