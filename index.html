@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takeaway O Bom Sabor</title>
+    <title>O Bom Sabor | Takeaway</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -23,56 +23,60 @@
         <div class="hero-content">
             <h1 class="titulo-central">O Bom Sabor</h1>
             <p class="subtitulo">COMIDA TRADICIONAL EM MONTE GORDO</p>
-            <button class="btn-menu-principal" onclick="abrirModalMenu()">Ver Menu e Pedir</button>
+            <button id="btn-menu" class="btn-menu-principal" onclick="abrirModalMenu()">Ver Menu e Pedir</button>
         </div>
     </header>
+
+    <main class="container">
+        <section class="horarios-section">
+            <h2 class="section-title">Horários de Funcionamento</h2>
+            <div class="horario-flex">
+                <div class="horario-box">
+                    <h3>Atendimento</h3>
+                    <p>Seg - Dom: 11:00 - 14:00</p>
+                    <p>Seg - Sáb: 18:00 - 21:00</p>
+                </div>
+                <div class="horario-box">
+                    <h3>Serviço Balcão</h3>
+                    <p>Seg - Dom: 11:40 - 13:45</p>
+                    <p>Seg - Sáb: 18:45 - 20:40</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mapa-seccao">
+            <h2 class="section-title">Onde Estamos</h2>
+            <div class="mapa-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3181.8665314781775!2d-7.4497645!3d37.185564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd10168449c20a1f%3A0x6d2c4b8b6939a3f!2sMonte%20Gordo!5e0!3m2!1spt-PT!2spt!4v1700000000000" 
+                width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
 
     <div id="modal-menu" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>MENU PRINCIPAL</h2>
+                <h2>Menu Principal</h2>
                 <i class="fa-solid fa-xmark" onclick="fecharModalMenu()"></i>
             </div>
-            
-            <div class="modal-body">
-                <h3>Pratos do Dia</h3>
-                <div id="lista-pratos-dia"></div>
-                
-                <h3>Pizzas</h3>
-                <div id="lista-pizzas"></div>
-            </div>
+            <div id="lista-pratos-dia"></div>
+            <div id="lista-pizzas"></div>
+            <button class="btn-fechar" onclick="fecharModalMenu()">Fechar</button>
         </div>
     </div>
 
     <div id="cart-sidebar" class="sidebar">
         <div class="sidebar-header">
-            <h3>O Meu Cesto</h3>
-            <i class="fa-solid fa-arrow-right" onclick="toggleCart()"></i>
+            <h3>Cesto</h3>
+            <i class="fa-solid fa-xmark" onclick="toggleCart()"></i>
         </div>
         <div id="cart-items-list"></div>
         <div class="sidebar-footer">
-            <label>Hora de Recolha:</label>
-            <select id="agendar-hora"></select>
-            <label class="saco-check">
-                <input type="checkbox" id="check-saco" onchange="renderCart()"> Incluir Saco (+0,20€)
-            </label>
-            <div class="total-box">
-                <span>Total:</span>
-                <span id="cart-total">0.00€</span>
-            </div>
-            <button class="btn-pagar" onclick="confirmar()">Confirmar Já</button>
+            <div class="total-box">Total: <span id="cart-total">0.00€</span></div>
+            <button class="btn-pagar" onclick="confirmar()">Confirmar</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="titulo-central">O Bom Sabor</h1>
-            <p class="subtitulo">COMIDA TRADICIONAL EM MONTE GORDO</p>
-            <button id="btn-menu" class="btn-menu-principal" onclick="abrirModalMenu()">Ver Menu e Pedir</button>
-        </div>
-    </header>
-
-<script src="script.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
