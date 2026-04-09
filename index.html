@@ -18,58 +18,52 @@
     </nav>
 
     <header class="hero">
-        <div class="hero-overlay">
-            <h1 class="titulo-principal">O Bom Sabor</h1>
-            <p class="subtitulo">COMIDA TRADICIONAL EM MONTE GORDO</p>
-            <button id="botao-abrir-menu" class="btn-pedido">Ver Menu e Pedir</button>
+        <div class="hero-content">
+            <h1>O Bom Sabor</h1>
+            <p>COMIDA TRADICIONAL EM MONTE GORDO</p>
+            <button id="btn-abrir-menu" class="btn-principal">Ver Menu e Pedir</button>
         </div>
     </header>
 
-    <main class="info-footer">
-        <div class="info-grid">
-            <div class="info-item">
-                <h3><i class="fa-solid fa-clock"></i> Horário de Atendimento</h3>
-                <p>Segunda - Domingo: 11:00 - 14:00</p>
-                <p>Segunda - Sábado: 18:00 - 21:00</p>
-            </div>
-            <div class="info-item">
-                <h3><i class="fa-solid fa-utensils"></i> Serviço de Balcão</h3>
-                <p>Segunda - Domingo: 11:40 - 13:45</p>
-                <p>Segunda - Sábado: 18:45 - 20:40</p>
-            </div>
+    <section class="seccao-horarios">
+        <div class="horario-col">
+            <h3><i class="fa-solid fa-clock"></i> Horário de Atendimento</h3>
+            <p>Segunda - Domingo: 11:00 - 14:00</p>
+            <p>Segunda - Sábado: 18:00 - 21:00</p>
         </div>
-        <div class="mapa-section">
-            <h3>Onde Estamos</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.333!2d-7.449!3d37.181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd10166!2sMonte%20Gordo!5e0!3m2!1spt!2spt!4v123456789" width="100%" height="250" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+        <div class="horario-col">
+            <h3><i class="fa-solid fa-utensils"></i> Serviço de Balcão</h3>
+            <p>Segunda - Domingo: 11:40 - 13:45</p>
+            <p>Segunda - Sábado: 18:45 - 20:40</p>
         </div>
-    </main>
+    </section>
+
+    <section class="seccao-mapa">
+        <div class="mapa-wrapper">
+            <iframe src="https://maps.google.com/?cid=14707494395471687325&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
 
     <div id="modal-menu" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>MENU PRINCIPAL</h2>
-                <span class="close" id="botao-fechar-menu">×</span>
+                <span class="fechar-modal">&times;</span>
             </div>
-            <div class="menu-seccao">
-                <h3>Pratos do Dia</h3>
-                <div id="lista-pratos"></div>
-            </div>
-            <div class="menu-seccao">
-                <h3>Pizzas</h3>
-                <div id="lista-pizzas"></div>
-            </div>
+            <div id="lista-pratos"></div>
+            <div id="lista-pizzas"></div>
         </div>
     </div>
 
-    <div id="carrinho" class="sidebar">
+    <div id="carrinho-lateral" class="sidebar">
         <div class="sidebar-header">
             <h3>O Meu Pedido</h3>
-            <span onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></span>
+            <span onclick="toggleCart()">&times;</span>
         </div>
-        <div id="itens-carrinho"></div>
+        <div id="itens-lista"></div>
         <div class="sidebar-footer">
-            <div class="total">Total: <span id="total-valor">0.00€</span></div>
-            <button class="btn-checkout" onclick="finalizarPedido()">Confirmar Pedido</button>
+            <div class="total">Total: <span id="valor-total">0.00€</span></div>
+            <button class="btn-finalizar" onclick="finalizar()">Confirmar Pedido</button>
         </div>
     </div>
 
