@@ -1,31 +1,69 @@
-:root { --main: #a35d14; --dark: #0d0d0d; }
-
-body { margin: 0; font-family: sans-serif; background: var(--dark); color: white; }
-
-.navbar { display: flex; justify-content: space-between; padding: 15px 5%; background: rgba(0,0,0,0.9); position: fixed; width: 100%; z-index: 1000; box-sizing: border-box; }
-.logo { font-weight: bold; color: var(--main); }
-
-.hero { 
-    height: 60vh; 
-    background: linear-gradient(rgba(0,0,0,0.4), var(--dark)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070'); 
-    background-size: cover; background-position: center;
-    display: flex; align-items: center; justify-content: center; text-align: center;
+:root {
+    --primaria: #a35d14; /* Tom de castanho/laranja das fotos */
+    --fundo: #0d0d0d;
+    --texto: #ffffff;
 }
 
-.titulo-central { font-size: 3.5rem; margin: 0; }
-.btn-menu-principal { background: var(--main); border: none; padding: 15px 35px; color: white; font-weight: bold; border-radius: 5px; cursor: pointer; margin-top: 20px; font-size: 1.1rem; }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--fundo);
+    color: var(--texto);
+}
 
-.container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+    position: fixed;
+    width: 90%;
+    z-index: 100;
+}
+.logo { font-weight: bold; font-size: 1.2rem; }
+.cart-icon { cursor: pointer; position: relative; }
+#cart-count { background: var(--primaria); padding: 2px 6px; border-radius: 50%; font-size: 0.7rem; position: absolute; top: -10px; right: -10px; }
 
-.quadro-horario { background: #1a1a1a; padding: 30px; border-radius: 10px; border: 1px solid #333; text-align: center; margin-bottom: 40px; }
-.quadro-horario h3 { color: var(--main); margin-top: 0; }
-hr { border: 0; border-top: 1px solid #333; margin: 20px 0; }
+/* Hero Section (A imagem de fundo) */
+.hero {
+    height: 80vh;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-overlay { text-align: center; }
+.titulo-principal { font-size: 4rem; margin: 0; font-weight: 800; }
+.subtitulo { letter-spacing: 2px; color: #ddd; margin: 10px 0 30px; }
 
-.mapa-wrapper { border-radius: 10px; overflow: hidden; border: 1px solid #333; }
+.btn-pedido {
+    background-color: var(--primaria);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-pedido:hover { transform: scale(1.05); background-color: #8b4f11; }
 
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
-.modal-content { background: #111; padding: 25px; border-radius: 10px; width: 90%; max-width: 500px; }
-.item-menu { display: flex; justify-content: space-between; padding: 12px; background: #1a1a1a; margin-bottom: 8px; border-radius: 5px; cursor: pointer; }
+/* Info Footer */
+.info-footer { padding: 40px 5%; max-width: 1000px; margin: 0 auto; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+.info-item h3 { color: var(--primaria); border-left: 3px solid var(--primaria); padding-left: 10px; }
 
-.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #000; z-index: 3000; transition: 0.4s; padding: 20px; }
+/* Modal Menu */
+.modal { display: none; position: fixed; z-index: 200; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); }
+.modal-content { background: #1a1a1a; margin: 5% auto; width: 90%; max-width: 600px; border-radius: 10px; padding: 20px; max-height: 80vh; overflow-y: auto; }
+.modal-header { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding-bottom: 10px; }
+.item-menu { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #222; cursor: pointer; }
+.item-menu:hover { color: var(--primaria); }
+
+/* Sidebar Carrinho */
+.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: #111; z-index: 300; transition: 0.4s; padding: 20px; box-sizing: border-box; }
 .sidebar.active { right: 0; }
+.btn-checkout { width: 100%; background: #25d366; color: white; border: none; padding: 15px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; }
